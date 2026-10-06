@@ -2,7 +2,7 @@
 title: About Me
 ---
 
-I started my career as an undergraduate at Colgate University where I studied Astronomy-Physics and Computer Science. I also ran from the Men's Cross Country and Track and Field teams as a long distance runner.
+I started my career as an undergraduate at Colgate University where I studied Astronomy-Physics and Computer Science. I also ran for the Men's Cross Country and Track and Field teams as a long distance runner.
 
 For my graduate degree, I studied at Cornell University under Dr. Jim Cordes. Besides academic work, I was a member of the Astronomy Grads Network, the Cornell Running Club, the Cornell Track and Field Club, and the High Noon Athletic Club. 
 

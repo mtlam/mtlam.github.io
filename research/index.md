@@ -8,11 +8,11 @@ I am interested in understanding the different processes that lead to noise in o
 + Modeling pulsar noise, both in characterization and in extrapolation, from intrinsic sources to measurement effects
 + Interstellar medium propagation effects, such as scattering, scintillation, and dispersion measure variations
 
-## Collaboration roles
+## Collaboration Roles
 
-I am co-chair of NANOGrav's Cyber-Infrastructure Working Group, co-lead the production of the 20-Year Data Set, and lead the Chromatic Task Force. I've previously served as co-chair of the Noise Budget Working Group, served on the collaboration's Management Team, and co-lead the production of the 12.5-Year Data Set.
+I am co-chair of NANOGrav's Cyber-Infrastructure Working Group, co-lead the production of the 20-Year Data Set, and lead the Chromatic Task Force. I've previously served as co-chair of the Noise Budget Working Group, served on the collaboration's Management Team, and co-led the production of the 12.5-Year Data Set.
 
-## Paper summaries
+## Paper Summaries
 
 Illustrated one-page summaries of selected papers. [See all of them](papers/), or the full publication list in my [CV]({{ site.cv }}).
 
@@ -26,4 +26,4 @@ Illustrated one-page summaries of selected papers. [See all of them](papers/), o
 
 ## Research Group
 
-I've currently work with one postdoctoral researcher at the SETI Institute. I've previously advised high school, undergraduate, and graduate students. See the [group page](group/) for current members and alumni.
+I currently work with one postdoctoral researcher at the SETI Institute. I've previously advised high school, undergraduate, and graduate students. See the [group page](group/) for current members and alumni.
