@@ -16,7 +16,7 @@ Markdown pages, except as noted below.
 
 ## Code: MIT
 
-The site's code (layouts, includes, stylesheets, scripts, and `tools/`) is
+The site's code (layouts, includes, stylesheets, scripts) is
 licensed under the MIT License:
 
 > Copyright (c) 2026 Michael T. Lam
