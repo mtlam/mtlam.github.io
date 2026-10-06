@@ -4,9 +4,6 @@
 #   soundcloud: TRACK_ID                   (the number after api.soundcloud.com/tracks/ in the embed code)
 #   link: https://...                      (anything else: Spotify, a web page, etc.)
 # "why" is a short note on the connection to pulsars, radio astronomy, black holes...
-#
-# These are carried over from the old music box. Titles marked "Song title"
-# couldn't be recovered automatically; fill them in.
 
 - title: Give Me 24 Banks
   artist: Paul Marganian
