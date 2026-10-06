@@ -1,0 +1,8 @@
+{%- comment -%}
+Usage: {% include figure.html src="/assets/papers/x/fig.png" alt="..." caption="Markdown caption" %}
+Add side="left" to put the figure on the left; default is right. Add wide=true for a full-width figure.
+{%- endcomment -%}
+<figure class="{% if include.wide %}wide{% else %}side {{ include.side | default: 'right' }}{% endif %}">
+  <a href="{{ include.src | relative_url }}"><img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy"></a>
+  {%- if include.caption %}<figcaption>{{ include.caption | markdownify }}</figcaption>{% endif %}
+</figure>

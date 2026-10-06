@@ -1,0 +1,29 @@
+---
+title: The music box
+scripts: [/assets/js/musicbox.js]
+permalink: /musicbox/
+summary: Songs about pulsars, radio astronomy, black holes, and other things I work on.
+---
+<p>Songs that have something to do with my research: pulsars, radio telescopes, black holes, gravitational waves. Press play on any of them, or let the music box pick.</p>
+
+<p><button type="button" class="button" id="mb-shuffle" hidden>Play something at random</button></p>
+
+<ol class="entries songs">
+{%- for s in site.data.musicbox %}
+  <li class="song"
+      {%- if s.youtube %} data-youtube="{{ s.youtube }}"{% endif %}
+      {%- if s.soundcloud %} data-soundcloud="{{ s.soundcloud }}"{% endif %}
+      {%- if s.bandcamp %} data-bandcamp-album="{{ s.bandcamp.album }}" data-bandcamp-track="{{ s.bandcamp.track }}"{% endif %}>
+    <div class="song-head">
+      {%- if s.link %}
+      <a class="play" href="{{ s.link }}" aria-label="Listen to {{ s.title | escape }} (opens another site)">Listen</a>
+      {%- else %}
+      <button type="button" class="play" aria-label="Play {{ s.title | escape }}" hidden>Play</button>
+      {%- endif %}
+      <p><span class="name">{{ s.title }}</span>{% if s.artist %}, {{ s.artist }}{% endif %}</p>
+    </div>
+    {%- if s.why and s.why != "" %}<p class="meta">{{ s.why }}</p>{% endif %}
+    <div class="player"></div>
+  </li>
+{%- endfor %}
+</ol>

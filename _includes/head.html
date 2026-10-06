@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% if page.title %}{% assign full_title = page.title | append: " | " | append: site.title %}{% else %}{% assign full_title = site.title %}{% endif %}
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ page.summary | default: site.description | strip_html | escape }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ page.summary | default: site.description | strip_html | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+{% if page.math %}{% include math.html %}{% endif %}
+<script src="{{ '/assets/js/email.js' | relative_url }}" defer></script>
+{% for s in page.scripts %}<script src="{{ s | relative_url }}" defer></script>
+{% endfor %}

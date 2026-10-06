@@ -1,0 +1,45 @@
+# --- Jekyll build output (GitHub rebuilds the site itself) ---
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# --- Ruby / Bundler (local preview only) ---
+.bundle/
+vendor/
+
+# --- Python (tools/profile_to_svg.py) ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Editors and operating systems ---
+*~
+*.swp
+*.swo
+.*.swp
+\#*\#
+.#*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- LaTeX build files (if you keep note sources here) ---
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+
+# --- Raw pulsar data used to make the header graphics ---
+# Uncomment to keep large archives and profile dumps out of the public repo.
+# *.ar
+# *.fits
+# *.npy
+# profile*.txt

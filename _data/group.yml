@@ -1,0 +1,21 @@
+# Group members. Add a new person by copying a block.
+# "now" is optional: where an alumnus went next.
+# "url" is optional: a personal page or profile.
+
+current:
+  - name: Shania Nichols, Ph.D.
+    role: Postdoctoral Researcher
+    since: 2024
+    topic: Pulsar Profile Variability
+
+alumni:
+  - name: Sophia Sosa, Ph.D.
+    role: Graduate Researcher
+    years: 2022–2026
+    topic: <a href="https://repository.rit.edu/theses/12490/">Enhanced Pulsar Timing Precision for the Era of Nanohertz Gravitational Wave Astronomy</a>
+    now: Postdoctoral Researcher, ASTRON
+  - name: Olivia Young, Ph.D.
+    role: Graduate researcher
+    years: 2020–2025
+    topic: <a href="https://repository.rit.edu/theses/12303/">Radio Emission as a Probe of Astrophysical Sources and Ionized Media</a>
+    now: Electronics Engineer, Green Bank Observatory

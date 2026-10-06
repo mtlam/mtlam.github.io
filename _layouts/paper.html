@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="paper">
+  <header class="paper-head">
+    <h1>{{ page.title }}</h1>
+    <p class="meta">
+      {%- if page.journal %}{% if page.journal_url %}<a href="{{ page.journal_url }}">{{ page.journal }}</a>{% else %}{{ page.journal }}{% endif %}, {% endif -%}
+      {{ page.date | date: "%B %Y" }}
+    </p>
+    {%- if page.authors %}
+    <details class="authors">
+      <summary>{{ page.authors_short | default: "Authors" }}</summary>
+      <p>{{ page.authors }}</p>
+    </details>
+    {%- endif %}
+    <p class="actions">
+      {%- if page.arxiv %}<a class="button" href="https://arxiv.org/abs/{{ page.arxiv }}">Read the paper on arXiv</a>{% endif %}
+      {%- if page.journal_url %} <a class="button" href="{{ page.journal_url }}">Journal version</a>{% endif %}
+      {%- for l in page.links %} <a class="button" href="{{ l.url }}">{{ l.name }}</a>{% endfor %}
+    </p>
+  </header>
+
+  {%- if page.lead_image %}
+  <figure class="paper-lead">
+    <img src="{{ page.lead_image | relative_url }}" alt="{{ page.lead_alt | escape }}">
+    {%- if page.lead_caption %}<figcaption>{{ page.lead_caption | markdownify }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+
+  <div class="paper-body">
+{{ content }}
+  </div>
+  <p class="back"><a href="{{ '/research/papers/' | relative_url }}">All paper summaries</a></p>
+</article>

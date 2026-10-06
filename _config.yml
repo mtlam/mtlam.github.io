@@ -1,0 +1,58 @@
+title: Michael T. Lam, Ph.D.
+tagline: Research scientist at the SETI Institute and member of the NANOGrav Collaboration
+description: Pulsar timing, interstellar propagation, and nanohertz gravitational waves.
+email:
+  user: michael.lam
+  domain: nanograv.org   
+cv: /assets/files/CV.pdf        # drop your CV here with this exact name
+portrait: /assets/img/portrait.jpg  
+
+# Look and feel
+palette: teal                     # teal, blue or red
+profile: /assets/img/profile.svg  # header pulse profile
+marker: /assets/img/marker.svg    # pulse over the current page
+
+# Custom domain, leave baseurl empty.
+url: "https://astromlam.com"
+baseurl: ""
+
+# Main navigation, in order. The CV entry links straight to the PDF.
+nav:
+  - title: Research
+    url: /research/
+  - title: Group
+    url: /research/group/
+  - title: Notes
+    url: /notes/
+  - title: About
+    url: /about/
+  - title: Music Box
+    url: /musicbox/
+  - title: Links
+    url: /links/
+
+# Research notes live in the _notes folder, one Markdown file each.
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+  papers:
+    output: true
+    permalink: /research/papers/:name/
+
+defaults:
+  - scope: { path: "", type: notes }
+    values: { layout: note, math: true }
+  - scope: { path: "", type: papers }
+    values: { layout: paper, hide_title: true }
+  - scope: { path: "" }
+    values: { layout: default }
+
+permalink: pretty   # pages get clean URLs like /about/
+theme: null   # stop the github-pages gem adding the Primer theme, whose style.css collides with ours
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax   # kramdown only marks up $$...$$; KaTeX renders it
+
+exclude: [README.md, Gemfile, Gemfile.lock, vendor, tools]

@@ -1,0 +1,232 @@
+/* ------------------------------------------------------------------
+   Chart-recorder look: graph paper, blue-black ink, a colored pen trace.
+   Pick the accent with `palette:` in _config.yml (teal, blue or red).
+   ------------------------------------------------------------------ */
+:root {
+  --ink: #1c2530;
+  --muted: #56616c;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Charter, "Bitstream Charter", Cambria, Georgia, serif;
+  color-scheme: light dark;
+}
+:root, [data-palette="teal"] {   /* NANOGrav-style teal */
+  --paper: #f2f5f4; --band: #e4eceb; --grid: rgba(11, 122, 131, 0.11); --rule: #c7d3d2;
+  --pen: #0b7a83; --link: #09616b;
+}
+[data-palette="blue"] {          /* deep SETI-style blue */
+  --paper: #f3f5f8; --band: #e6ebf3; --grid: rgba(28, 79, 166, 0.09); --rule: #c9d1de;
+  --pen: #1c4fa6; --link: #173f86;
+}
+[data-palette="red"] {           /* chart-recorder red */
+  --paper: #f3f5f0; --band: #e8ede5; --grid: rgba(60, 110, 75, 0.12); --rule: #c9d2c6;
+  --pen: #b3342b; --link: #1f4f80;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #dde4e9; --muted: #9aa6b1; }
+  :root, [data-palette="teal"] {
+    --paper: #0f171c; --band: #13212a; --grid: rgba(78, 195, 199, 0.08); --rule: #263842;
+    --pen: #4ec3c7; --link: #7fd3d6;
+  }
+  [data-palette="blue"] {
+    --paper: #0f1521; --band: #141d2e; --grid: rgba(127, 166, 240, 0.08); --rule: #27324a;
+    --pen: #7fa6f0; --link: #a3bff5;
+  }
+  [data-palette="red"] {
+    --paper: #10171f; --band: #142029; --grid: rgba(140, 190, 160, 0.07); --rule: #2a3744;
+    --pen: #ee7b66; --link: #93bde6;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.1875rem/1.65 var(--serif);
+  font-kerning: normal;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+.wrap { max-width: 58rem; margin-inline: auto; padding-inline: 1.5rem; }
+main { padding-top: 2.75rem; padding-bottom: 3rem; }
+main > *, .note > * { max-width: 37rem; }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: 2.25rem; margin: 0 0 1.25rem; }
+h2 { font-size: 1.45rem; margin: 2.5rem 0 0.75rem; }
+h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
+p, ul, ol { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px;
+}
+.lead { font-size: 1.4rem; line-height: 1.45; }
+.meta, footer { color: var(--muted); font-size: 0.95rem; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+img { max-width: 100%; height: auto; }
+code { font-size: 0.88em; }
+pre { overflow-x: auto; padding: 1rem; background: var(--band); border-radius: 3px; font-size: 0.85rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--paper); padding: 0.5rem; z-index: 2; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Header: graph-paper band with the pen trace ---------- */
+.band {
+  background-color: var(--band);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border-bottom: 1px solid var(--rule);
+  padding-top: 1.5rem;
+}
+.trace {
+  /* Sizes scale together; --s shrinks everything on phones. The profile
+     graphic (assets/img/profile.svg) is 160 x 48 with its baseline at y = 42. */
+  --s: 1;
+  --trace-h: calc(48px * var(--s));
+  --profile-w: calc(160px * var(--s));
+  --base: calc(41px * var(--s));
+  --line: calc(2px * var(--s));
+  --interpulse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M0 42H16L19 40.6L21.4 41.6L24 22L26.8 38.6L28.4 37.4L31 42H48' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.trace ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+.trace a, .trace .fill { position: relative; display: block; }
+.trace a {
+  padding: calc(var(--trace-h) + 6px) 0.6em 0.75em;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.trace .brand a { font-weight: 650; padding-left: 0; padding-right: 1.4em; min-width: calc(var(--profile-w) + 0.75rem); }
+.trace a:hover { color: var(--pen); }
+.trace .fill { flex: 1 1 0; min-width: 1.5rem; }
+
+.trace a::before, .trace .fill::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: var(--trace-h);
+  background: var(--pen);
+}
+/* Flat stretches of baseline under every item... */
+.trace a::before, .trace .fill::before {
+  -webkit-mask: linear-gradient(#000 0 0) left 0 top var(--base) / 100% var(--line) no-repeat;
+          mask: linear-gradient(#000 0 0) left 0 top var(--base) / 100% var(--line) no-repeat;
+}
+/* ...the real pulse profile at the far left, above the name... */
+.trace .brand a::before {
+  -webkit-mask:
+    var(--profile) left top / var(--profile-w) var(--trace-h) no-repeat,
+    linear-gradient(#000 0 0) left var(--profile-w) top var(--base) / calc(100% - var(--profile-w)) var(--line) no-repeat;
+          mask:
+    var(--profile) left top / var(--profile-w) var(--trace-h) no-repeat,
+    linear-gradient(#000 0 0) left var(--profile-w) top var(--base) / calc(100% - var(--profile-w)) var(--line) no-repeat;
+}
+/* ...and a small interpulse above the page you're on. */
+   .trace li:not(.brand) a[aria-current]::before {
+     -webkit-mask:
+       linear-gradient(#000 0 0) left 0 top var(--base) / calc(50% - var(--trace-h) / 2 + 1px) var(--line) no-repeat,
+       var(--interpulse) center top / auto var(--trace-h) no-repeat,
+       linear-gradient(#000 0 0) right 0 top var(--base) / calc(50% - var(--trace-h) / 2 + 1px) var(--line) no-repeat;
+             mask:
+       linear-gradient(#000 0 0) left 0 top var(--base) / calc(50% - var(--trace-h) / 2 + 1px) var(--line) no-repeat,
+       var(--interpulse) center top / auto var(--trace-h) no-repeat,
+       linear-gradient(#000 0 0) right 0 top var(--base) / calc(50% - var(--trace-h) / 2 + 1px) var(--line) no-repeat;
+   }
+
+/* Outlined link buttons (paper pages) */
+.button {
+  display: inline-block; padding: 0.3rem 0.9rem; border: 1px solid var(--pen); border-radius: 3px;
+  color: var(--pen); text-decoration: none; font-family: var(--serif); font-size: 0.95rem; line-height: 1.5;
+  background: none; cursor: pointer;
+}
+.button:hover { background: var(--band); }
+
+/* ---------- Home ---------- */
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 2.5rem; align-items: start; max-width: none; }
+.intro > div > :first-child { margin-top: 0; }
+.portrait { width: 12rem; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; background: var(--band); }
+
+/* ---------- Lists of people, notes, links ---------- */
+.entries { list-style: none; padding: 0; }
+.entries li { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
+.entries li:last-child { border-bottom: 1px solid var(--rule); }
+.entries .name { font-weight: 600; }
+.entries p { margin: 0.15rem 0 0; }
+.entries .meta { margin: 0; }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid var(--rule); padding-top: 1rem; padding-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.25rem 2rem; }
+footer p { margin: 0; }
+footer a { color: inherit; }
+
+@media (max-width: 40rem) {
+  body { font-size: 1.0625rem; }
+  h1 { font-size: 1.85rem; }
+  .lead { font-size: 1.2rem; }
+  .intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .intro .portrait { width: 9rem; order: -1; }
+  .band { padding-top: 0.75rem; }
+  .trace { --s: 0.72; }
+  .trace a { font-size: 1rem; padding-left: 0.45em; padding-right: 0.45em; }
+}
+
+/* ---------- Music box ---------- */
+.songs { counter-reset: none; }
+.song-head { display: flex; align-items: baseline; gap: 0.9rem; }
+.song-head p { margin: 0; }
+.song .play {
+  flex: none; width: 4.2rem; text-align: center; font-family: var(--serif); font-size: 0.9rem;
+  color: var(--pen); background: none; border: 1px solid var(--pen); border-radius: 3px;
+  padding: 0.1rem 0; cursor: pointer; text-decoration: none;
+}
+.song .play:hover { background: var(--band); }
+.song .meta { margin-left: 5.1rem; }
+.player:not(:empty) { margin-top: 0.75rem; }
+.player iframe { display: block; width: 100%; max-width: 37rem; border: 0; border-radius: 3px; }
+.player iframe.video { aspect-ratio: 16 / 9; height: auto; }
+
+/* ---------- Paper summaries ---------- */
+main > .paper, .paper > *, .paper-body { max-width: none; }
+.paper-head > *, .paper-body > p { max-width: 40rem; }
+.paper-head h1 { font-size: 1.9rem; margin-bottom: 0.5rem; }
+.paper-head .meta { margin-bottom: 0.5rem; }
+.authors { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
+.authors summary { cursor: pointer; }
+.authors p { margin: 0.5rem 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.paper-lead { margin: 2rem 0; }
+.paper-body h2 { clear: both; padding-top: 2.25rem; margin-top: 2.25rem; border-top: 1px solid var(--rule); }
+.paper-body::after { content: ""; display: block; clear: both; }
+.paper-body ul { padding-left: 1.2rem; }
+.paper-body li { margin-bottom: 0.6rem; }
+.paper-body strong { font-weight: 650; }
+figure { margin: 0 0 1.5rem; }
+figure img { display: block; border-radius: 2px; }
+figcaption { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin-top: 0.6rem; }
+figcaption p { margin: 0; }
+figure.side { width: 44%; }
+figure.side.right { float: right; margin-left: 2.5rem; }
+figure.side.left { float: left; margin-right: 2.5rem; }
+figure.wide { clear: both; }
+.paper .back { clear: both; padding-top: 1rem; }
+
+.papers li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.papers li > :only-child { grid-column: 1 / -1; }
+.papers img { width: 6.5rem; aspect-ratio: 1; object-fit: cover; border-radius: 2px; background: var(--band); }
+
+@media (max-width: 40rem) {
+  figure.side, figure.side.right, figure.side.left { float: none; width: auto; margin: 0 0 1.5rem; }
+  .papers li { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem; }
+  .papers img { width: 4.5rem; }
+  .paper-head h1 { font-size: 1.5rem; }
+}
+
+.email .rev { unicode-bidi: bidi-override; direction: rtl; }
+
+/* Display math in notes: left-aligned, and allowed to run past the text
+   column on wide screens so long derivation steps don't need scrolling. */
+main > .note { max-width: none; }   /* text inside still keeps the 37rem measure */
+.note .katex-display > .katex { text-align: left; padding-left: 1.5rem; }
+@media (max-width: 40rem) { .note .katex-display > .katex { padding-left: 0; } }

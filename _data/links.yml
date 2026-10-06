@@ -1,0 +1,35 @@
+# External links, grouped. Each group becomes a section on the Links page.
+- group: Collaborations and Institutions
+  links:
+    - name: NANOGrav
+      url: https://nanograv.org
+      note: North American Nanohertz Observatory for Gravitational Waves
+    - name: SETI Institute
+      url: https://www.seti.org
+
+- group: Publications and Profiles
+  links:
+    - name: NASA ADS publication list
+      url: https://ui.adsabs.harvard.edu/search/q=docs(library%2Fkhhm0RKaTHSKoetekctsLg)&sort=date%20desc%2C%20bibcode%20desc&p_=0
+    - name: ORCID
+      url: https://orcid.org/0000-0003-0721-651X
+    - name: GitHub
+      url: https://github.com/mtlam
+
+- group: Software
+  links:
+    - name: PyPulse
+      url: https://mtlam.github.io/PyPulse/
+      note: A Python package used to handle PSRFITS files and perform subsequent analyses on pulse profiles.
+    - name: Quicklook
+      url: https://github.com/mtlam/Quicklook
+      note: A package to quickly look at PSRFITS observations.
+    - name: FrequencyOptimizer
+      url: https://github.com/mtlam/FrequencyOptimizer
+      note: A package to calculate the optimal frequencies for pulsars, along with all quantities going into TOA uncertainties. Please see <a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...861...12L/abstract">Lam et al. 2018</a>.
+
+- group: Miscellaneous
+  links:
+    - name: AskScience
+      url: https://www.reddit.com/r/askscience/
+      note: A Reddit forum for answering science questions

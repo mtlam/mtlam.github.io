@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<article class="note">
+  <p class="meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+    {%- if page.pdf %}, also available <a href="{{ page.pdf | relative_url }}">as a PDF</a>{% endif %}
+  </p>
+  {{ content }}
+  <p class="back"><a href="{{ '/notes/' | relative_url }}">All notes</a></p>
+</article>

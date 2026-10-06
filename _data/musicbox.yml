@@ -1,0 +1,63 @@
+# Songs for the music box. Each entry needs a title and ONE source:
+#   youtube: VIDEO_ID                      (the part after watch?v= or /embed/)
+#   bandcamp: { album: ID, track: ID }     (from Bandcamp's Share/Embed code; track is optional)
+#   soundcloud: TRACK_ID                   (the number after api.soundcloud.com/tracks/ in the embed code)
+#   link: https://...                      (anything else: Spotify, a web page, etc.)
+# "why" is a short note on the connection to pulsars, radio astronomy, black holes...
+#
+# These are carried over from the old music box. Titles marked "Song title"
+# couldn't be recovered automatically; fill them in.
+
+- title: Give Me 24 Banks
+  artist: Paul Marganian
+  soundcloud: 1278546958
+  why: ""
+
+- title: Supermassive Black Hole
+  artist: Muse
+  youtube: Xsp3_a-PMTw
+  why: ""
+
+- title: Pulsar Timing Array (In Constant Motion) [Stark White EP]
+  artist: Vile Electrodes
+  bandcamp: { album: 2392258045, track: 3877444067 }
+
+- title: Neutron Star [Kurzgesagt Vol. 1]
+  artist: Epic Mountain
+  bandcamp: { album: 1376017216, track: 3750812081 }
+
+- title: Dispersion Measure - FALGSC [Winter Chill, Vol. 1]
+  artist: Dispersion Measure
+  bandcamp: { album: 2985033092, track: 3214761271 }
+
+- title: Pulsar
+  artist: TOMMY '86
+  bandcamp: { track: 3444479978 }
+
+- title: FRB 010724 Lorimer Burst 
+  artist: Dean Wolfe
+  bandcamp: { album: 2264438471, track: 1729212847 }
+
+- title: Solar Dome [Gravitational Waves]
+  artist: Javi Cánovas
+  bandcamp: { album: 1859573739 }
+
+- title: The Arecibo Message [Pulsar]
+  artist: The Arecibo Message
+  bandcamp: { album: 1995873388, track: 3592060338 }
+
+- title: Pulsar
+  artist: Pyrior
+  bandcamp: { album: 1002606259, track: 3116983447 }
+
+- title: Wing Commander Soundtrack - Into the Quasar
+  artist: Kevin Kiner & David Arnold
+  youtube: 4v4VAIiugsc
+
+- title: To the Quasar
+  artist: Ayreon
+  youtube: MwkLyw7VKrE
+
+- title: Into the Black Hole
+  artist: Ayreon
+  youtube: l82xVrGuOoQ

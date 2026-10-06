@@ -1,0 +1,19 @@
+---
+title: Paper summaries
+summary: One-page summaries of papers, with key figures and results.
+---
+<p>Short, illustrated summaries of some of my papers. For a complete list, see my <a href="{{ site.cv | relative_url }}">CV</a>.</p>
+
+<ul class="entries papers">
+{%- assign papers = site.papers | sort: "date" | reverse -%}
+{%- for p in papers %}
+  <li>
+    {%- if p.thumb or p.lead_image %}<img src="{{ p.thumb | default: p.lead_image | relative_url }}" alt="" loading="lazy">{% endif %}
+    <div>
+      <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+      <p class="meta">{{ p.journal }}, {{ p.date | date: "%Y" }}</p>
+      {%- if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+    </div>
+  </li>
+{%- endfor %}
+</ul>

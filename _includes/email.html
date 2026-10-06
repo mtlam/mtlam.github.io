@@ -1,0 +1,14 @@
+{%- comment -%}
+Spam-resistant email link.
+  {% include email.html %}                      shows your address
+  {% include email.html text="get in touch" %}  shows custom link text
+The HTML only ever contains the address reversed. CSS displays it the right
+way round; assets/js/email.js then makes it a normal mailto link.
+{%- endcomment -%}
+{%- if site.email.user -%}
+  {%- assign addr = site.email.user | append: "@" | append: site.email.domain -%}
+{%- else -%}
+  {%- assign addr = site.email -%}
+{%- endif -%}
+{%- assign rev = addr | split: "" | reverse | join: "" | replace: "@", "&#64;" -%}
+<a class="email" data-rev="{{ rev }}">{% if include.text %}{{ include.text }}{% else %}<span class="rev">{{ rev }}</span>{% endif %}</a>

@@ -1,0 +1,17 @@
+{%- comment -%} The current page is the nav entry with the longest matching URL prefix. {%- endcomment -%}
+{%- assign best = "" -%}
+{%- for item in site.nav -%}
+  {%- assign n = item.url | size -%}
+  {%- assign prefix = page.url | slice: 0, n -%}
+  {%- if prefix == item.url and n > best.size -%}{%- assign best = item.url -%}{%- endif -%}
+{%- endfor -%}
+<nav class="trace" aria-label="Main" style="--profile: url('{{ site.profile | relative_url }}'){% if site.marker %}; --interpulse: url('{{ site.marker | relative_url }}'){% endif %}">
+  <ul>
+    <li class="brand"><a href="{{ '/' | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>{{ site.title }}</a></li>
+    {%- for item in site.nav %}
+    <li><a href="{{ item.url | relative_url }}"{% if item.url == best %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+    {%- endfor %}
+    <li><a href="{{ site.cv | relative_url }}">CV</a></li>
+    <li class="fill" aria-hidden="true"></li>
+  </ul>
+</nav>

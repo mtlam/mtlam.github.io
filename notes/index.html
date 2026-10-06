@@ -1,0 +1,13 @@
+---
+title: Notes
+---
+<p>Short derivations and working notes from my research modified from LaTeX PDFs generated over the years. Dates inidicate last updated times on my end.</p>
+
+<ul class="entries">
+{%- assign notes = site.notes | sort: "date" | reverse -%}
+{%- for note in notes %}
+  <li><a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+    <p class="meta">{{ note.date | date: "%-d %B %Y" }}{% if note.pdf %}, <a href="{{ note.pdf | relative_url }}">PDF</a>{% endif %}</p>
+    {%- if note.summary %}<p>{{ note.summary }}</p>{% endif %}</li>
+{%- endfor %}
+</ul>
